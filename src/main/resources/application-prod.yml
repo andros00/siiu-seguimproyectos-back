@@ -1,0 +1,23 @@
+####################################################
+#####     Configuración general Spring    ##########
+####################################################
+
+# Configuraciones del servidor
+server:
+  port: 8090
+  servlet:
+    context-path: '/siiu-seguimproyectos-back'
+
+# Configuraciones de Spring Framework
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  datasource:
+       jndi-name: 'jdbc/consultabuppDSProd'
+        
+log:
+  path: '/web/nfs/ArchivosOyS/logs/siiu-seguimproyectos-back'
+  file: 'udea-siiu-seguimproyectos-back'
+  package: 'co.edu.udea.siiu-seguimproyectos-back'
+
+

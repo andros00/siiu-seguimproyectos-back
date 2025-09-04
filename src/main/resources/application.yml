@@ -1,0 +1,10 @@
+####################################################
+#####     Archivo base de Spring MVC      ##########
+####################################################
+
+spring:
+  profiles:
+    active: '@activatedProperties@'
+  static:
+    locations: classpath:/static/
+

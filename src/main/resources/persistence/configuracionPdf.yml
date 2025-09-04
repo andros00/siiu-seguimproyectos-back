@@ -1,0 +1,165 @@
+# Configuración para PDF
+pdf:
+  # Rutas de imágenes
+  escudoCabecera: static/img/Escudo.jpg
+  marcaAguaValido: static/img/marcaAguaEscudoUdeA.png
+  marcaAguaNoValido: static/img/marcaAguaEscudoUdeANoValido.png
+
+  # Estilos de la cabecera y pie de página
+  header: |
+    div.header {
+      display: relative;
+      text-align: center;
+      position: running(header);
+    }
+
+  footer: |
+    div.footer {
+      display: block;
+      text-align: center;
+      font-size: 60%;
+      font-family: Arial, Helvetica, sans-serif;
+      position: running(footer);
+    }
+
+  # Estilos del contenido y paginación
+  content: |
+    div.content {
+      display: block;
+      position: absolute;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    #pagenumber:before {
+      content: counter(page);
+    }
+
+    #pagecount:before {
+      content: counter(pages);
+    }
+
+  # Tamaño de la página y márgenes
+  margenes: |
+    @page {
+      size: 8.5in 11in;
+      margin-top: 4cm;
+      margin-right: 2cm;
+      margin-bottom: 3cm;
+      margin-left: 2cm;
+    }
+
+  # Ubicación del contenido
+  ubicacionContenido: |
+    @page {
+      @top-center {
+        content: element(header);
+      }
+      @bottom-center {
+        content: element(footer);
+      }
+    }
+
+  # Configuración de la paginación
+  tipoPaginacion:
+    nullTipo: "@page { @bottom-right { content: page(counter); font-size: 60%; }}"
+    PaginaXdeY: |
+      @page {
+        @bottom-right {
+          content: 'Página ' counter(page) ' de ' counter(pages);
+          font-size: 60%;
+        }
+      }
+    Pagina: |
+      @page {
+        @bottom-right {
+          content: 'Página ' counter(page);
+          font-size: 60%;
+        }
+      }
+      
+  configuracionBoletaTramite: |
+    <table border='0' width='640' align='center' style="font-family: Arial; font-size: 11px;">
+      <tr>
+        <th colspan='6' align='center'><b>Formato de impresión de validación de Trámites</b><br/><br/></th>
+      </tr>
+      <tr>
+        <td><b>Trámite: </b></td>
+        <td colspan='5'>__nombreTramite__</td>
+      </tr>
+      <tr>
+        <td><b>Nro trámite: </b></td>
+        <td>__nroTramite__</td>
+        <td><b>Fecha Solicitud: </b></td>
+        <td>__fechaSolicitud__</td>
+        <td><b>Fecha impresión: </b></td>
+        <td>__fechaImpresion__</td>
+      </tr>
+      <tr>
+        <td><b>Identificación: </b></td>
+        <td colspan='5'>__identificacion__</td>
+      </tr>
+      <tr>
+        <td><b>Nombre: </b></td>
+        <td colspan='5'>__nombreSolicitante__</td>
+      </tr>
+      <tr>
+        <td colspan='6'>
+          <br/>
+          <br/>
+          <br/>
+          <table width='100%' align='center' border='1' cellpadding='0' cellspacing='0'>
+            <tr>
+              <th colspan='3' align='center'><b>Lista de certificados del trámite</b></th>
+            </tr>
+            <tr>
+              <th><b>Certificado</b></th>
+              <th><b>Estado</b></th>
+              <th><b>Observación</b></th>
+            </tr>
+            __listaCertificados__
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan='6'>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <table width='100%'>
+            <tr>
+              <th><b>__funcionarioResponsable__</b></th>
+            </tr>
+            <tr>
+              <th><b>Funcionario Responsable</b></th>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    
+  cabeceraHtmlEscudo: |
+    <br/><div style='text-align: center; '><img src='__imagenEscudoCabecera__' /></div>
+    
+  boletaNombreTramite: __nombreTramite__
+  boletaNumeroTramite: __nroTramite__
+  boletaIdentificacion: __identificacion__
+  boletaNombreSolicitante: __nombreSolicitante__
+  boletaFechaSolicitud: __fechaSolicitud__
+  boletaFechaImpresion: __fechaImpresion__
+  boletaListaCertificados: __listaCertificados__
+  boletaFuncionarioResponsabe: __funcionarioResponsable__
+  imagenCabeceraHtmlEscudo: __imagenEscudoCabecera__
+  # Deben ir separados por dos guiones bajos (__) cada uno de los caracteres que se van a reemplazar
+  caracteresReemplazar: "&nbsp;,&#160;__&aacute;,\u00E1__&eacute;,\u00E9__&iacute;,\u00ED__&oacute;,\u00F3__&uacute;,u__\
+                      &auml;,\u00E4__&euml;,\u00EB__&iuml;,\u00EF__&ouml;,\u00F6__&uuml;,\u00FC__\
+                      &Aacute;,\u00C1__&Eacute;,\u00C9__&Iacute;,\u00CD__&Oacute;,\u00D3__&Uacute;,\u00DA__\
+                      &Auml;,\u00C4__&Euml;,\u00CB__&Iuml;,\u00CF__&Ouml;,\u00D6__&Uuml;,\u00DC"
+
+  
+
+

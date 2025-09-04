@@ -1,36 +1,225 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.18</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.1.8.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.udea</groupId>
+	<groupId>co.edu.udea.desarrollo-institucional</groupId>
+	<!-- Este tiene que ser el mismo nombre de la app, y tambien en was -->
 	<artifactId>siiu-seguimproyectos-back</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
 	<name>siiu-seguimproyectos-back</name>
-	<description>SIIU Backend Project</description>
+	<description>Aplicacion que gestiona los tramites y certificados UdeA</description>
+
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<sonar.organization>davidtorres-sys</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<!-- Parametrización de la universidad -->
+		<organization.id>UdeA</organization.id>
+		<organization.name>
+			Universidad de Antioquia :: UdeA
+		</organization.name>
+		<organization.url>http://www.udea.edu.co</organization.url>
+		<!-- Parametrización del proyecto -->
+		<info.compilation>
+			${project.artifactId}-${project.version}
+		</info.compilation>
+
+		<!-- Parametrización de SCM -->
+		<repo.url>http://gitlab.udea.red:8085/InvestigacionDlloInnovacion/siiu-seguimproyectos-back.git</repo.url>
+		<repo.conexion>http://gitlab.udea.red:8085/InvestigacionDlloInnovacion/siiu-seguimproyectos-back.git</repo.conexion>
+
 	</properties>
+
+	<scm>
+		<url>${repo.url}</url>
+		<connection>${repo.conexion}</connection>
+		<developerConnection>${repo.conexion}</developerConnection>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>co.edu.udea.nexus</id>
+			<name>udea-releases</name>
+			<url>http://172.19.1.106:8081/repository/${nexus.snapshotRepository}</url>
+		</repository>
+		<snapshotRepository>
+			<id>co.edu.udea.nexus</id>
+			<name>udea-snapshots</name>
+			<url>http://172.19.1.106:8081/repository/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+
+			<properties>
+				<env>dev</env>
+				<!-- Project configuration -->
+				<repo.ramarepo.rama>develop</repo.ramarepo.rama>
+				<artifactName>siiu-seguimproyectos-back</artifactName>
+				<nexus.snapshotRepository>quality</nexus.snapshotRepository>
+				<activatedProperties>dev</activatedProperties>
+				<webXmlPath>${project.basedir}/src/main/webapp/WEB-INF/web.dev.xml</webXmlPath>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>dllo</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<env>dllo</env>
+				<!-- Project configuration -->
+				<artifactName>siiu-seguimproyectos-back</artifactName>
+				<repo.rama>svrdllo</repo.rama>
+				<nexus.snapshotRepository>quality</nexus.snapshotRepository>
+				<activatedProperties>dllo</activatedProperties>
+				<webXmlPath>${project.basedir}/src/main/webapp/WEB-INF/web.dllo.xml</webXmlPath>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>test</id>				
+
+			<properties>
+				<env>test</env>
+				<!-- Project configuration -->
+				<repo.ramarepo.rama>quality</repo.ramarepo.rama>
+				<artifactName>siiu-seguimproyectos-back</artifactName>
+				<nexus.snapshotRepository>quality</nexus.snapshotRepository>
+				<activatedProperties>test</activatedProperties>
+				<webXmlPath>${project.basedir}/src/main/webapp/WEB-INF/web.test.xml</webXmlPath>
+			</properties>
+
+		</profile>
+
+		<profile>
+			<id>prod</id>
+			<properties>
+				<env>prod</env>
+				<!-- Project configuration -->
+				<repo.ramarepo.rama>master</repo.ramarepo.rama>
+				<artifactName>siiu-seguimproyectos-back</artifactName>
+				<nexus.snapshotRepository>releases</nexus.snapshotRepository>
+				<activatedProperties>prod</activatedProperties>
+				<webXmlPath>${project.basedir}/src/main/webapp/WEB-INF/web.prod.xml</webXmlPath>
+			</properties>
+		</profile>
+	</profiles>
+
 	<dependencies>
-		<!-- Spring Boot Starter -->
+		<!-- Librerias UdeA -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>co.edu.udea.apoyo-tecnico</groupId>
+			<artifactId>udea-utilidades</artifactId>
+			<version>0.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>co.edu.udea.apoyo-tecnico</groupId>
+			<artifactId>udea-filtro</artifactId>
+			<version>1.1.7</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>co.edu.udea.apoyo-tecnico</groupId>
+			<artifactId>udea-ws_client</artifactId>
+			<version>0.1.14</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>co.edu.udea.apoyo-tecnico</groupId>
+			<artifactId>udea-ws_security</artifactId>
+			<version>0.1.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+			<!--<scope>provided</scope>-->
+		</dependency>
+		<!-- Librerias Jersey -->
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-bundle</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- Librerias Json  -->
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib-ext-spring</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<!-- Librerías para WAS -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>18.3.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.xhtmlrenderer/flying-saucer-pdf-openpdf -->
+		<dependency>
+			<groupId>org.xhtmlrenderer</groupId>
+			<artifactId>flying-saucer-pdf-openpdf</artifactId>
+			<version>9.1.22</version>
+		</dependency>
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.5.13.2</version> <!-- Mantén esta versión o actualiza a 5.5.13.3 -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -38,79 +227,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Database  -->
-		<dependency>
-			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
-		<!-- Lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<!-- OpenAPI Documentation -->
-<!--		<dependency>-->
-<!--			<groupId>org.springdoc</groupId>-->
-<!--			<artifactId>springdoc-openapi-ui</artifactId>-->
-<!--			<version>1.6.14</version>-->
-<!--		</dependency>-->
-
-		<!-- MapStruct for Object Mapping -->
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>1.5.5.Final</version>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-processor</artifactId>
-			<version>1.5.5.Final</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-
-		<!-- JUnit 5 (Jupiter) for testing -->
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.7.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.7.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Mockito for mocking -->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>3.7.7</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Spring Test for testing Spring components -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>5.3.6</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-    		<groupId>org.apache.commons</groupId>
-    		<artifactId>commons-lang3</artifactId>
-    		<version>3.12.0</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -118,19 +240,22 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<image>
-						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
-					</image>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
+					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
-        </plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webXml>${webXmlPath}</webXml>
+					<warSourceExcludes>/WEB-INF/web.*.xml</warSourceExcludes>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
-
 </project>
