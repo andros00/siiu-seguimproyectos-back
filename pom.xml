@@ -30,8 +30,8 @@
 		</info.compilation>
 
 		<!-- Parametrización de SCM -->
-		<repo.url>http://gitlab.udea.red:8085/InvestigacionDlloInnovacion/siiu-seguimproyectos-back.git</repo.url>
-		<repo.conexion>http://gitlab.udea.red:8085/InvestigacionDlloInnovacion/siiu-seguimproyectos-back.git</repo.conexion>
+		<repo.url>http://ws-svn.udea.red/git/DesarrolloInstitucional/udea-siiu-seguimproyectos-back.git</repo.url>
+		<repo.conexion>http://ws-svn.udea.red/git/DesarrolloInstitucional/udea-siiu-seguimproyectos-back.git</repo.conexion>
 
 	</properties>
 

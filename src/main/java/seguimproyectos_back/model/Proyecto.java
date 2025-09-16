@@ -7,12 +7,14 @@
  */
 package seguimproyectos_back.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL) 
 public class Proyecto extends ProyectoBase {
 
     private static final long serialVersionUID = -5549017032114431885L;

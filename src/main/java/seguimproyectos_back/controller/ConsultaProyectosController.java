@@ -1,8 +1,7 @@
 package seguimproyectos_back.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,10 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.udea.utilities.exception.UdeaException;
 import seguimproyectos_back.bl.interfaces.ConsultaProyectosService;
+import seguimproyectos_back.model.GenericResponse;
 import seguimproyectos_back.model.Proyecto;
 
 @RestController
-@RequestMapping("Proyecto")
+@RequestMapping("proyectos")
 public class ConsultaProyectosController {
 
 	private final ConsultaProyectosService consultaProyectosService;
@@ -28,9 +28,12 @@ public class ConsultaProyectosController {
 	public String obteneVariableCertificado() {
 		return "Hola mundo";
 	}
-
-	@GetMapping("/consulta")
-	public List<Proyecto> consultar(@RequestBody Proyecto proyecto) throws UdeaException {
-		return consultaProyectosService.consultarProyecto(proyecto);
+	
+	@PostMapping(value = "/consultar")
+	public ResponseEntity<GenericResponse> consultar(@RequestBody Proyecto proyecto) throws UdeaException {
+		GenericResponse genericResponse = new GenericResponse();
+		genericResponse.setData(consultaProyectosService.consultarProyecto(proyecto));
+		genericResponse.setSuccessResponse();
+		return ResponseEntity.ok(genericResponse);
 	}
 }
