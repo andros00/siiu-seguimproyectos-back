@@ -1,3 +1,11 @@
 0000000000000000000000000000000000000000 487aa7068abfbee17b6d99f385c55b1025966c85 andres.tirado <andres.tirado@udea.edu.co> 1756957716 -0500	clone: from http://gitlab.udea.red:8085/InvestigacionDlloInnovacion/siiu-seguimproyectos-back.git
 487aa7068abfbee17b6d99f385c55b1025966c85 1ba5610e7ca4ab16d990325e28bbc71746ab21fd andres.tirado <andres.tirado@udea.edu.co> 1756958350 -0500	commit: Ajuste de la estructura back
 1ba5610e7ca4ab16d990325e28bbc71746ab21fd 11df8fb73e27c951f6a613fb81f82ca8143a7fc5 andres.tirado <andres.tirado@udea.edu.co> 1758045009 -0500	commit: Cambios de estructura de deison
+11df8fb73e27c951f6a613fb81f82ca8143a7fc5 4a2bf908d37ceaeae9091c040d9114392bce6132 andres.tirado <andres.tirado@udea.edu.co> 1758057396 -0500	commit: Implementación de dependencias swagger para documentación
+4a2bf908d37ceaeae9091c040d9114392bce6132 67a5935887dec74c2e11db6eac2ddabb2b62ebdb andres.tirado <andres.tirado@udea.edu.co> 1758057624 -0500	checkout: moving from develop to feature-devConfigIni
+67a5935887dec74c2e11db6eac2ddabb2b62ebdb 1098ec92a597fe2cd951f8c206439937c862a1e7 andres.tirado <andres.tirado@udea.edu.co> 1758058773 -0500	commit: Carga de la otra versión de deison
+1098ec92a597fe2cd951f8c206439937c862a1e7 57f051911fb59469a560c914cf362fe8cdddd9f3 andres.tirado <andres.tirado@udea.edu.co> 1758059491 -0500	commit (merge): Merge branch 'develop' into feature-devConfigIni
+57f051911fb59469a560c914cf362fe8cdddd9f3 b3b751df0abd91c1238f98a33e08f12b825c4fed andres.tirado <andres.tirado@udea.edu.co> 1758060029 -0500	commit: Merge develop con swagger y deison
+b3b751df0abd91c1238f98a33e08f12b825c4fed 4a2bf908d37ceaeae9091c040d9114392bce6132 andres.tirado <andres.tirado@udea.edu.co> 1758060178 -0500	checkout: moving from feature-devConfigIni to develop
+4a2bf908d37ceaeae9091c040d9114392bce6132 b3b751df0abd91c1238f98a33e08f12b825c4fed andres.tirado <andres.tirado@udea.edu.co> 1758060197 -0500	merge feature-devConfigIni: Fast-forward
+b3b751df0abd91c1238f98a33e08f12b825c4fed ae32aa202f534eff5583e48679f58cdec329a980 andres.tirado <andres.tirado@udea.edu.co> 1758309212 -0500	pull origin: Fast-forward

@@ -25,8 +25,10 @@ public class Proyecto extends ProyectoBase {
     private Integer administraProyectoInstanciaAdministrativa;
     private String nombreInstanciaAdministrativa;
     private String nombreCortoInstanciaAdministrativa;
+    private String nombreSubnivelProyecto;
     private String jefeInstanciaAdministrativa;
     private String documentoJefeInstanciaAdm;
+    private String ipCoordinadorProyecto;
     private String cargoJefe;
     private String nombreCentroGestionNivelAdministrativo;
     private Date notificadoFechaPrepuestoTotalEjecutado;

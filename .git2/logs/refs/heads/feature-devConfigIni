@@ -1,0 +1,4 @@
+0000000000000000000000000000000000000000 67a5935887dec74c2e11db6eac2ddabb2b62ebdb andres.tirado <andres.tirado@udea.edu.co> 1758057624 -0500	branch: Created from refs/remotes/origin/feature-devConfigIni
+67a5935887dec74c2e11db6eac2ddabb2b62ebdb 1098ec92a597fe2cd951f8c206439937c862a1e7 andres.tirado <andres.tirado@udea.edu.co> 1758058773 -0500	commit: Carga de la otra versión de deison
+1098ec92a597fe2cd951f8c206439937c862a1e7 57f051911fb59469a560c914cf362fe8cdddd9f3 andres.tirado <andres.tirado@udea.edu.co> 1758059491 -0500	commit (merge): Merge branch 'develop' into feature-devConfigIni
+57f051911fb59469a560c914cf362fe8cdddd9f3 b3b751df0abd91c1238f98a33e08f12b825c4fed andres.tirado <andres.tirado@udea.edu.co> 1758060029 -0500	commit: Merge develop con swagger y deison

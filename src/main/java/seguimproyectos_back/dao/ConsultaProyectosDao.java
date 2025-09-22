@@ -56,37 +56,45 @@ public class ConsultaProyectosDao {
 	                    @Override
 	                    public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
 	                        Proyecto p = new Proyecto();
-	                        p.setCodigo(rs.getString("CODIGO"));
-	                        p.setConvocatoria(rs.getLong("CONVOCATORIA"));
-	                        p.setModalidadConvocatoria(rs.getLong("MODALIDAD_CONVOCATORIA"));
-	                        p.setProcesoSeleccion(rs.getLong("PROCESO_SELECCION"));
-	                        p.setSubtipoProyecto(rs.getLong("SUBTIPO_PROYECTO"));
-	                        p.setSubtipoProyectoNombre(rs.getString("SUBTIPO_PROYECTO_NOMBRE"));
-	                        p.setTipoProyectoNombre(rs.getString("TIPO_PROYECTO_NOMBRE"));
-	                        p.setEtapaActual(rs.getLong("ETAPA_ACTUAL"));
-	                        p.setInstanciaAdmtivaActual(rs.getLong("INSTANCIA_ADMTIVA_ACTUAL"));
-	                        p.setCentroGestion(rs.getLong("CENTRO_GESTION"));
-	                        p.setResponsable(rs.getString("RESPONSABLE"));
-	                        p.setSelectorResponsable(rs.getString("SELECTOR_RESPONSABLE"));
-	                        p.setSeccional(rs.getString("SECCIONAL"));
-	                        p.setSelectorSeccional(rs.getString("SELECTOR_SECCIONAL"));
-	                        p.setEstado(rs.getString("ESTADO"));
+	                        p.setCodigo(rs.getString("CODIGO"));           
 	                        p.setNombreCorto(rs.getString("NOMBRE_CORTO"));
 	                        p.setNombreCompleto(rs.getString("NOMBRE_COMPLETO"));
-	                        p.setPalabrasClaves(rs.getString("PALABRAS_CLAVES"));
+	                        p.setEstado(rs.getString("ESTADO"));
+	                        p.setConvocatoria(rs.getLong("CONVOCATORIA"));
+	                        p.setProcesoSeleccion(rs.getLong("PROCESO_SELECCION"));
+	                        p.setResponsable(rs.getString("RESPONSABLE"));
+	                        p.setTipoProyectoNombre(rs.getString("TIPO_PROYECTO_NOMBRE"));
+	                        p.setNombreCortoConvocatoria(rs.getString("NOMBRE_CORTO_CONVOCATORIA"));
+	                        p.setNombreSubnivelProyecto(rs.getString("NOMBRE_SUBNIVEL_PROYECTO"));
+	                        p.setNombreProcesoSeleccion(rs.getString("NOMBRE_PROCESO_SELECCION"));
+	                        p.setIpCoordinadorProyecto(rs.getString("IP_O_COORDINADOR"));
 	                        p.setDuracion(rs.getLong("DURACION"));
-	                        p.setLugarEjecucion(rs.getString("LUGAR_EJECUCION"));
-	                        p.setMoneda(rs.getString("MONEDA"));
-	                        p.setPendienteAjustePpto(rs.getLong("PENDIENTE_AJUSTE_PPTO"));
-	                        p.setPeriodoCronograma(rs.getString("PERIODO_CRONOGRAMA"));
 	                        p.setFechaInicioInicioFormal(rs.getDate("FECHA_INICIO"));
 	                        p.setFechaInicioFinalizacionFormal(rs.getDate("FECHA_FINALIZACION"));
-	                        p.setCentroGestionStr(rs.getString("NOMBRE_CENTRO_GESTION"));
-	                        p.setCentroGestionCortoStr(rs.getString("NOMBRE_CORTO_CENTRO_GESTION"));
-	                        p.setMaxProrrogaInicioFormal(rs.getLong("MAX_PRORROGA_INI_FORMAL"));
-	                        p.setMaxProrrogaEjecucion(rs.getLong("MAX_PRORROGA_EJECUCION"));
-	                        p.setNombreCortoConvocatoria(rs.getString("NOMBRE_CORTO_CONVOCATORIA"));
-	                        p.setIdCentroGestion(rs.getLong("CENTRO_GESTION"));
+
+	                        
+	                        
+//	                        p.setSubtipoProyecto(rs.getLong("SUBTIPO_PROYECTO"));
+
+//	                        p.setCentroGestionStr(rs.getString("NOMBRE_CENTRO_GESTION"));
+//	                        p.setCentroGestionCortoStr(rs.getString("NOMBRE_CORTO_CENTRO_GESTION"));
+//	                        p.setMaxProrrogaInicioFormal(rs.getLong("MAX_PRORROGA_INI_FORMAL"));
+//	                        p.setMaxProrrogaEjecucion(rs.getLong("MAX_PRORROGA_EJECUCION"));
+//	                        p.setNombreCortoConvocatoria(rs.getString("NOMBRE_CORTO_CONVOCATORIA"));
+//	                        p.setIdCentroGestion(rs.getLong("CENTRO_GESTION"));
+//	                        p.setEtapaActual(rs.getLong("ETAPA_ACTUAL"));
+//	                        p.setInstanciaAdmtivaActual(rs.getLong("INSTANCIA_ADMTIVA_ACTUAL"));
+//	                        p.setCentroGestion(rs.getLong("CENTRO_GESTION"));
+//	                        p.setModalidadConvocatoria(rs.getLong("MODALIDAD_CONVOCATORIA"));
+//	                        p.setSelectorResponsable(rs.getString("SELECTOR_RESPONSABLE"));
+//	                        p.setSeccional(rs.getString("SECCIONAL"));
+//	                        p.setSelectorSeccional(rs.getString("SELECTOR_SECCIONAL"));	              
+//	                        p.setPalabrasClaves(rs.getString("PALABRAS_CLAVES"));
+//	                        p.setLugarEjecucion(rs.getString("LUGAR_EJECUCION"));
+//	                        p.setMoneda(rs.getString("MONEDA"));
+//	                        p.setPendienteAjustePpto(rs.getLong("PENDIENTE_AJUSTE_PPTO"));
+//	                        p.setPeriodoCronograma(rs.getString("PERIODO_CRONOGRAMA"));
+	                       
 	                        return p;
 	                    }
 	                });
