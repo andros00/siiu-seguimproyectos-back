@@ -13,7 +13,7 @@
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<name>siiu-seguimproyectos-back</name>
-	<description>Aplicacion que gestiona los tramites y certificados UdeA</description>
+	<description>Aplicacion que gestiona los proyectos de investigación</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -223,17 +223,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-		<!-- 
+		<!-- Swagger Core -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
-		</dependency>-->
+		</dependency>
 	</dependencies>
 
 	<build>
