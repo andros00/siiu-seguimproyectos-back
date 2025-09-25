@@ -10,12 +10,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import seguimproyectos_back.controller.projecttype.UdeaException;
+import co.edu.udea.utilities.exception.UdeaException;
 import seguimproyectos_back.model.GenericResponse;
 import seguimproyectos_back.service.announcement.IAnnouncementService;
 
 @RestController
-@RequestMapping("/v1/convocatoria")
+@RequestMapping("/convocatoria")
 @Api(value = "Proyectos", tags = { "Gestión de convocatoria" })
 public class AnnouncementController {
 

@@ -33,7 +33,7 @@ public class ConvocatoriaDao {
 		return jdbcTemplate.query(sql, new RowMapper<AnnouncementDTO>() {
 			@Override
 			public AnnouncementDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
-				SelectionProcessDTO p = new SelectionProcessDTO();
+				AnnouncementDTO p = new AnnouncementDTO();
 				p.setId(rs.getLong("IDENTIFICADOR"));
 				p.setName(rs.getString("NOMBRE"));
 				return p;

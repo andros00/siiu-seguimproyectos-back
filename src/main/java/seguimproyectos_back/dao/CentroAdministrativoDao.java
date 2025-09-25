@@ -27,7 +27,7 @@ public class CentroAdministrativoDao {
 	}
 
 	public List<AdministrativeCenterDTO> getAll() {
-		String sql = "SELECT * FROM SIIU_INSTANCIA_ADMINISTRATIVA ps";
+		String sql = "SELECT * FROM SIIU_INSTANCIA_ADMINISTRATIVA";
 
 		return jdbcTemplate.query(sql, new RowMapper<AdministrativeCenterDTO>() {
 			@Override

@@ -1,4 +1,4 @@
-package com.udea.siiuseguimproyectosback.controllers.v1;
+package seguimproyectos_back.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiResponses;
  * endpoint can be used to verify that the API is running and accessible.
  */
 @RestController
-@RequestMapping("/v1/health")
+@RequestMapping("/health")
 public class PingController {
 
 	/**

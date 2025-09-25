@@ -16,7 +16,7 @@ import seguimproyectos_back.model.Proyecto;
 import seguimproyectos_back.service.proyecto.ConsultaProyectosService;
 
 @RestController
-@RequestMapping("proyectos")
+@RequestMapping("/proyectos")
 @Api(value = "Proyectos", tags = { "Gestión de proyectos" })
 public class ConsultaProyectosController {
 

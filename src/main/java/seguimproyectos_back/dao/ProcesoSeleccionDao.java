@@ -27,7 +27,7 @@ public class ProcesoSeleccionDao {
 	}
 
 	public List<SelectionProcessDTO> getAll() {
-		String sql = "SELECT * FROM siiu_proceso_seleccion ps";
+		String sql = "SELECT * FROM SIIU_PROCESO_SELECCION";
 
 		return jdbcTemplate.query(sql, new RowMapper<SelectionProcessDTO>() {
 			@Override
