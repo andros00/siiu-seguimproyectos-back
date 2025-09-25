@@ -40,17 +40,17 @@ public class ConsultaProyectosDao {
 	    }
 
 	    public List<Proyecto> consultaProyectos(Proyecto proyecto) {
-	        String sql = "SELECT * FROM TABLE(SIIU_PROYECTO_CRUD.SP_SELECT01(?, ?, ?, ?, ?, ?, ?))";
+	        String sql = "SELECT * FROM TABLE(SIIU_PROYECTO_CRUD.SP_SELECT001(?, ?, ?, ?, ?, ?))";
 
 	        return jdbcTemplate.query(sql,
 	                new Object[] {
 	                        formatSqlLike(proyecto.getCodigo()),
 	                        formatSqlLike(proyecto.getCentroGestionStr()),
-	                        formatSqlLike(proyecto.getPalabrasClaves()),
-	                        formatSqlLike(proyecto.getNombreCorto()),
-	                        formatSqlLike(proyecto.getNombreCompleto()),
-	                        formatSqlLike(proyecto.getFinanciador()),
-	                        formatSqlLike(proyecto.getEstado())
+	                        formatSqlLike(proyecto.getEstado()),
+	                        (proyecto.getProcesoSeleccion()),
+	                        (proyecto.getConvocatoria()),
+	                        (proyecto.getSubtipoProyecto())
+	                        
 	                },
 	                new RowMapper<Proyecto>() {
 	                    @Override
@@ -63,6 +63,7 @@ public class ConsultaProyectosDao {
 	                        p.setConvocatoria(rs.getLong("CONVOCATORIA"));
 	                        p.setProcesoSeleccion(rs.getLong("PROCESO_SELECCION"));
 	                        p.setResponsable(rs.getString("RESPONSABLE"));
+	                        p.setNombreCompletoResponsable(rs.getString("NOMBRE_RESPONSABLE"));
 	                        p.setTipoProyectoNombre(rs.getString("TIPO_PROYECTO_NOMBRE"));
 	                        p.setNombreCortoConvocatoria(rs.getString("NOMBRE_CORTO_CONVOCATORIA"));
 	                        p.setNombreSubnivelProyecto(rs.getString("NOMBRE_SUBNIVEL_PROYECTO"));

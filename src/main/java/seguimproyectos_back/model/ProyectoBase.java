@@ -18,6 +18,7 @@ public class ProyectoBase implements Serializable {
     private String nombreCorto;
     private String nombreCompleto;
     private String responsable;
+    private String nombreResponsable;
     private Long subtipoProyecto;
     private String palabrasClaves;
     private Long duracion;
