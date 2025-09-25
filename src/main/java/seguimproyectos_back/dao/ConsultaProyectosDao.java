@@ -45,7 +45,7 @@ public class ConsultaProyectosDao {
 	        return jdbcTemplate.query(sql,
 	                new Object[] {
 	                        formatSqlLike(proyecto.getCodigo()),
-	                        formatSqlLike(proyecto.getCentroGestionStr()),
+	                        (proyecto.getIdCentroGestion()),
 	                        formatSqlLike(proyecto.getEstado()),
 	                        (proyecto.getProcesoSeleccion()),
 	                        (proyecto.getConvocatoria()),
