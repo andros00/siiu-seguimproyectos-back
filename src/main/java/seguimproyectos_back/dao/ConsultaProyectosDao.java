@@ -31,50 +31,42 @@ public class ConsultaProyectosDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+	private String formatSqlLike(String valor) {
+		if (valor == null || valor.trim().isEmpty() || "%".equals(valor.trim())) {
+			return "%";
+		}
+		return "%" + valor.trim() + "%";
+	}
 
-	    private String formatSqlLike(String valor) {
-	        if (valor == null || valor.trim().isEmpty() || "%".equals(valor.trim())) {
-	            return "%";
-	        }
-	        return "%" + valor.trim() + "%";
-	    }
+	public List<Proyecto> consultaProyectos(Proyecto proyecto) {
+		String sql = "SELECT * FROM TABLE(SIIU_PROYECTO_CRUD.SP_SELECT001(?, ?, ?, ?, ?, ?))";
 
-	    public List<Proyecto> consultaProyectos(Proyecto proyecto) {
-	        String sql = "SELECT * FROM TABLE(SIIU_PROYECTO_CRUD.SP_SELECT001(?, ?, ?, ?, ?, ?))";
+		return jdbcTemplate.query(sql,
+				new Object[] { formatSqlLike(proyecto.getCodigo()), formatSqlLike(proyecto.getCentroGestionStr()),
+						formatSqlLike(proyecto.getEstado()), (proyecto.getProcesoSeleccion()),
+						(proyecto.getConvocatoria()), (proyecto.getSubtipoProyecto())
 
-	        return jdbcTemplate.query(sql,
-	                new Object[] {
-	                        formatSqlLike(proyecto.getCodigo()),
-	                        formatSqlLike(proyecto.getCentroGestionStr()),
-	                        formatSqlLike(proyecto.getEstado()),
-	                        (proyecto.getProcesoSeleccion()),
-	                        (proyecto.getConvocatoria()),
-	                        (proyecto.getSubtipoProyecto())
-	                        
-	                },
-	                new RowMapper<Proyecto>() {
-	                    @Override
-	                    public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
-	                        Proyecto p = new Proyecto();
-	                        p.setCodigo(rs.getString("CODIGO"));           
-	                        p.setNombreCorto(rs.getString("NOMBRE_CORTO"));
-	                        p.setNombreCompleto(rs.getString("NOMBRE_COMPLETO"));
-	                        p.setEstado(rs.getString("ESTADO"));
-	                        p.setConvocatoria(rs.getLong("CONVOCATORIA"));
-	                        p.setProcesoSeleccion(rs.getLong("PROCESO_SELECCION"));
-	                        p.setResponsable(rs.getString("RESPONSABLE"));
-	                        p.setNombreCompletoResponsable(rs.getString("NOMBRE_RESPONSABLE"));
-	                        p.setTipoProyectoNombre(rs.getString("TIPO_PROYECTO_NOMBRE"));
-	                        p.setNombreCortoConvocatoria(rs.getString("NOMBRE_CORTO_CONVOCATORIA"));
-	                        p.setNombreSubnivelProyecto(rs.getString("NOMBRE_SUBNIVEL_PROYECTO"));
-	                        p.setNombreProcesoSeleccion(rs.getString("NOMBRE_PROCESO_SELECCION"));
-	                        p.setIpCoordinadorProyecto(rs.getString("IP_O_COORDINADOR"));
-	                        p.setDuracion(rs.getLong("DURACION"));
-	                        p.setFechaInicioInicioFormal(rs.getDate("FECHA_INICIO"));
-	                        p.setFechaInicioFinalizacionFormal(rs.getDate("FECHA_FINALIZACION"));
+				}, new RowMapper<Proyecto>() {
+					@Override
+					public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Proyecto p = new Proyecto();
+						p.setCodigo(rs.getString("CODIGO"));
+						p.setNombreCorto(rs.getString("NOMBRE_CORTO"));
+						p.setNombreCompleto(rs.getString("NOMBRE_COMPLETO"));
+						p.setEstado(rs.getString("ESTADO"));
+						p.setConvocatoria(rs.getLong("CONVOCATORIA"));
+						p.setProcesoSeleccion(rs.getLong("PROCESO_SELECCION"));
+						p.setResponsable(rs.getString("RESPONSABLE"));
+						p.setNombreCompletoResponsable(rs.getString("NOMBRE_RESPONSABLE"));
+						p.setTipoProyectoNombre(rs.getString("TIPO_PROYECTO_NOMBRE"));
+						p.setNombreCortoConvocatoria(rs.getString("NOMBRE_CORTO_CONVOCATORIA"));
+						p.setNombreSubnivelProyecto(rs.getString("NOMBRE_SUBNIVEL_PROYECTO"));
+						p.setNombreProcesoSeleccion(rs.getString("NOMBRE_PROCESO_SELECCION"));
+						p.setIpCoordinadorProyecto(rs.getString("IP_O_COORDINADOR"));
+						p.setDuracion(rs.getLong("DURACION"));
+						p.setFechaInicioInicioFormal(rs.getDate("FECHA_INICIO"));
+						p.setFechaInicioFinalizacionFormal(rs.getDate("FECHA_FINALIZACION"));
 
-	                        
-	                        
 //	                        p.setSubtipoProyecto(rs.getLong("SUBTIPO_PROYECTO"));
 
 //	                        p.setCentroGestionStr(rs.getString("NOMBRE_CENTRO_GESTION"));
@@ -95,10 +87,10 @@ public class ConsultaProyectosDao {
 //	                        p.setMoneda(rs.getString("MONEDA"));
 //	                        p.setPendienteAjustePpto(rs.getLong("PENDIENTE_AJUSTE_PPTO"));
 //	                        p.setPeriodoCronograma(rs.getString("PERIODO_CRONOGRAMA"));
-	                       
-	                        return p;
-	                    }
-	                });
-	    }
+
+						return p;
+					}
+				});
+	}
 
 }

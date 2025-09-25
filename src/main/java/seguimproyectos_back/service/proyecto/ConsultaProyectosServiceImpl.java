@@ -1,11 +1,10 @@
-package seguimproyectos_back.bl.impl;
+package seguimproyectos_back.service.proyecto;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import co.edu.udea.utilities.exception.UdeaException;
-import seguimproyectos_back.bl.interfaces.ConsultaProyectosService;
 import seguimproyectos_back.dao.ConsultaProyectosDao;
 import seguimproyectos_back.model.Proyecto;
 

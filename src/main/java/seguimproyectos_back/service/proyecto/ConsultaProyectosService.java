@@ -1,4 +1,4 @@
-package seguimproyectos_back.bl.interfaces;
+package seguimproyectos_back.service.proyecto;
 
 import java.util.List;
 
