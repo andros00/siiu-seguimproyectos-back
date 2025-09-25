@@ -42,9 +42,13 @@ public class ConsultaProyectosDao {
 		String sql = "SELECT * FROM TABLE(SIIU_PROYECTO_CRUD.SP_SELECT001(?, ?, ?, ?, ?, ?))";
 
 		return jdbcTemplate.query(sql,
-				new Object[] { formatSqlLike(proyecto.getCodigo()), formatSqlLike(proyecto.getCentroGestionStr()),
-						formatSqlLike(proyecto.getEstado()), (proyecto.getProcesoSeleccion()),
-						(proyecto.getConvocatoria()), (proyecto.getSubtipoProyecto())
+				new Object[] {
+						formatSqlLike(proyecto.getCodigo()),
+						formatSqlLike(proyecto.getCentroGestionStr()),
+						formatSqlLike(proyecto.getEstado()),
+						(proyecto.getProcesoSeleccion()),
+						(proyecto.getConvocatoria()), 
+						(proyecto.getSubtipoProyecto())
 
 				}, new RowMapper<Proyecto>() {
 					@Override
