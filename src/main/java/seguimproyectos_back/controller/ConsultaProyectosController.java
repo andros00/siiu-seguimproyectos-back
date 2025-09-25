@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.udea.utilities.exception.UdeaException;
+import io.swagger.annotations.Api;
 //import io.swagger.annotations.Api;
 //import io.swagger.annotations.ApiOperation;
 //import io.swagger.annotations.ApiResponse;
@@ -18,7 +19,7 @@ import seguimproyectos_back.model.Proyecto;
 
 @RestController
 @RequestMapping("proyectos")
-//@Api(value = "Proyectos", tags = { "Gestión de proyectos" })
+@Api(value = "Proyectos", tags = { "Gestión de proyectos" })
 public class ConsultaProyectosController {
 
 	private final ConsultaProyectosService consultaProyectosService;
