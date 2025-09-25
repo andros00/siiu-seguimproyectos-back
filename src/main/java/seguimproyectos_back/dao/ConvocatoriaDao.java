@@ -28,7 +28,7 @@ public class ConvocatoriaDao {
 	}
 
 	public List<AnnouncementDTO> getAll() {
-		String sql = "SELECT * FROM siiu_proceso_seleccion ps";
+		String sql = "SELECT * FROM SIIU_CONVOCATORIA cn";
 
 		return jdbcTemplate.query(sql, new RowMapper<AnnouncementDTO>() {
 			@Override
