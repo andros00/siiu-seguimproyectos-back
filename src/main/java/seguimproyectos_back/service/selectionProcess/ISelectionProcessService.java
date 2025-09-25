@@ -3,7 +3,7 @@ package seguimproyectos_back.service.selectionProcess;
 import java.util.List;
 
 import seguimproyectos_back.model.SelectionProcessDTO;
-import seguimproyectos_back.service.proyecto.UdeaException;
+import co.edu.udea.utilities.exception.UdeaException;
 
 public interface ISelectionProcessService {
 

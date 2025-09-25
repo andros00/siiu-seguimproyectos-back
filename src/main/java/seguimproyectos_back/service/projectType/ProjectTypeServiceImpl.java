@@ -1,18 +1,12 @@
 package seguimproyectos_back.service.projectType;
 
 import java.util.List;
-import java.util.Optional;
 
-import com.udea.siiuseguimproyectosback.core.exception.DataNotFoundException;
-import com.udea.siiuseguimproyectosback.domain.entity.project.ProjectType;
-import com.udea.siiuseguimproyectosback.utils.ValidateParams;
-
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import co.edu.udea.utilities.exception.UdeaException;
 import seguimproyectos_back.dao.TipoProyectoDao;
 import seguimproyectos_back.model.ProjectTypeDTO;
-import seguimproyectos_back.service.proyecto.UdeaException;
 
 @Service
 public class ProjectTypeServiceImpl implements IProjectTypeService {

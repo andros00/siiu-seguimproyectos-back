@@ -27,7 +27,7 @@ public class TipoProyectoDao {
 	}
 
 	public List<ProjectTypeDTO> getAll() {
-		String sql = "SELECT * FROM siiu_tipo_proyecto tp";
+		String sql = "SELECT * FROM SIIU_TIPO_PROYECTO";
 
 		return jdbcTemplate.query(sql, new RowMapper<ProjectTypeDTO>() {
 			@Override

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import seguimproyectos_back.controller.projecttype.UdeaException;
+import co.edu.udea.utilities.exception.UdeaException;
 import seguimproyectos_back.dao.CentroAdministrativoDao;
 import seguimproyectos_back.model.AdministrativeCenterDTO;
 

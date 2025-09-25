@@ -13,14 +13,14 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import seguimproyectos_back.controller.proyecto.UdeaException;
+import co.edu.udea.utilities.exception.UdeaException;
 import seguimproyectos_back.model.GenericResponse;
 import seguimproyectos_back.model.ProjectTypeDTO;
 import seguimproyectos_back.model.Proyecto;
 import seguimproyectos_back.service.projectType.IProjectTypeService;
 
 @RestController
-@RequestMapping("/v1/compartido")
+@RequestMapping("/compartido")
 @Api(value = "Proyectos", tags = { "Gestión de tipo proyecto" })
 public class ProjectTypeController {
 

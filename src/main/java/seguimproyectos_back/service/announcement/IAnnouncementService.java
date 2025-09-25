@@ -2,7 +2,7 @@ package seguimproyectos_back.service.announcement;
 
 import java.util.List;
 
-import seguimproyectos_back.controller.projecttype.UdeaException;
+import co.edu.udea.utilities.exception.UdeaException;
 import seguimproyectos_back.model.AnnouncementDTO;
 
 public interface IAnnouncementService {
