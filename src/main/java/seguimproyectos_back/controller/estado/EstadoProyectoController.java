@@ -1,20 +1,21 @@
 package seguimproyectos_back.controller.estado;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.edu.udea.utilities.exception.UdeaException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import seguimproyectos_back.controller.proyecto.UdeaException;
 import seguimproyectos_back.model.GenericResponse;
 import seguimproyectos_back.model.Proyecto;
 import seguimproyectos_back.service.estadosproyecto.EstadoProyectoService;
-import seguimproyectos_back.service.proyecto.ConsultaProyectosService;
 
 @RestController
 @RequestMapping("/commpartido")
@@ -27,12 +28,14 @@ public class EstadoProyectoController {
 		this.estadoProyectoService = estadoProyectoService;
 	}
 
-	@ApiOperation(value = "BUSCAR PROYECTOS SEGÚN LOS FILTROS SUMINISTRADOS", notes = "PROVEE UNO O VARIOS PROYECTOS ESPECÍFICO")
-	@ApiResponses(value = { @ApiResponse(code = 200, message = "PROYECTO ENCONTRADO"),
-			@ApiResponse(code = 404, message = "PROYECTO NO ENCONTRADO") })
+	@ApiOperation(value = "Retrieve a paginated list of Announcements (Convocatorias)", notes = "Fetch a list of announcements (convocatorias) with pagination support.")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "List of announcements retrieved successfully"),
+			@ApiResponse(code = 400, message = "Invalid pagination parameters"),
+			@ApiResponse(code = 204, message = "No announcements found"),
+			@ApiResponse(code = 500, message = "Internal server error") })
+	@GetMapping("/estados-proyecto")
+	public ResponseEntity<GenericResponse> getAll() throws UdeaException {
 
-	@PostMapping(value = "/estados-proyecto")
-	public ResponseEntity<GenericResponse> consultar(@RequestBody Proyecto proyecto) throws UdeaException {
 		GenericResponse genericResponse = new GenericResponse();
 		genericResponse.setData(estadoProyectoService.getAll());
 		genericResponse.setSuccessResponse();

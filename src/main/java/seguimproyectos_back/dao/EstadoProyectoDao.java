@@ -6,9 +6,11 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
-import seguimproyectos_back.model.AdministrativeCenterDTO;
+import seguimproyectos_back.model.EstadoProyectoDTO;
 
+@Repository
 public class EstadoProyectoDao {
 	
 	private final JdbcTemplate jdbcTemplate;
@@ -24,13 +26,13 @@ public class EstadoProyectoDao {
 		return "%" + valor.trim() + "%";
 	}
 
-	public List<AdministrativeCenterDTO> getAll() {
+	public List<EstadoProyectoDTO> getAll() {
 		String sql = "SELECT * FROM SIIU_ESTADO_PROYECTO";
 
-		return jdbcTemplate.query(sql, new RowMapper<AdministrativeCenterDTO>() {
+		return jdbcTemplate.query(sql, new RowMapper<EstadoProyectoDTO>() {
 			@Override
-			public AdministrativeCenterDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
-				AdministrativeCenterDTO p = new AdministrativeCenterDTO();
+			public EstadoProyectoDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+				EstadoProyectoDTO p = new EstadoProyectoDTO();
 				p.setId(rs.getLong("IDENTIFICADOR"));
 				p.setShortName(rs.getString("ESTADO"));
 				return p;

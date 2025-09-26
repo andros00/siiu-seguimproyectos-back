@@ -2,11 +2,11 @@ package seguimproyectos_back.service.estadosproyecto;
 
 import java.util.List;
 
-import seguimproyectos_back.model.ProjectTypeDTO;
-import seguimproyectos_back.service.projectType.UdeaException;
+import seguimproyectos_back.model.EstadoProyectoDTO;
+import co.edu.udea.utilities.exception.UdeaException;
 
 public interface EstadoProyectoService {
 
 
-	List<ProjectTypeDTO> getAll(Integer skip, Integer limit) throws UdeaException;
+	List<EstadoProyectoDTO> getAll() throws UdeaException;
 }
