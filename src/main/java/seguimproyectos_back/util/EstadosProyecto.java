@@ -1,15 +1,17 @@
 package seguimproyectos_back.util;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import seguimproyectos_back.model.EstadoProyectoDTO;
 
 public final class EstadosProyecto implements Serializable {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+
     public static final String ACTUALIZADO = "actualizado";
     public static final String APLAZADO = "aplazado";
     public static final String APROBADO = "aprobado";
@@ -38,9 +40,9 @@ public final class EstadosProyecto implements Serializable {
     public static final String VALIDADO_CIENTIFICAMENTE = "validcient";
     public static final String VALIDADO_TECNICAMENTE = "validtec";
     public static final String EN_LISTA_ELEGIBLES = "elegible";
-    private static final Map<String, String[]> estadosSiguientes = new HashMap<String, String[]>();
-    private static final Map<String, String> estadosNombres = new HashMap<String, String>();
 
+    private static final Map<String, String[]> estadosSiguientes = new HashMap<>();
+    private static final Map<String, String> estadosNombres = new HashMap<>();
 
     static {
         // Asociar estados posteriores a cada estado.
@@ -56,10 +58,10 @@ public final class EstadosProyecto implements Serializable {
         estadosSiguientes.put(FINALIZADO, new String[]{FINALIZADO_EVALUADO, LIQUIDADO});
         estadosSiguientes.put(FINALIZADO_EVALUADO, new String[]{LIQUIDADO});
         estadosSiguientes.put(FINALIZADO_PENDIENTE_COMPROMISOS, new String[]{
-                    FINALIZADO_PENDIENTE_COMPROMISOS,
-                    ATRASADO,
-                    FINALIZADO
-                });
+                FINALIZADO_PENDIENTE_COMPROMISOS,
+                ATRASADO,
+                FINALIZADO
+        });
         estadosSiguientes.put(LIQUIDADO, new String[]{});
         estadosSiguientes.put(NO_PROCESADO, new String[]{});
         estadosSiguientes.put(PENDIENTE_ACTUALIZACION, new String[]{});
@@ -76,6 +78,7 @@ public final class EstadosProyecto implements Serializable {
         estadosSiguientes.put(VALIDADO_TECNICAMENTE, new String[]{});
         estadosSiguientes.put(VALIDADO_CIENTIFICAMENTE, new String[]{});
         estadosSiguientes.put(EN_LISTA_ELEGIBLES, new String[]{});
+
         // Asociación de nombres descriptivos para cada código de estado.
         estadosNombres.put(ACTUALIZADO, "Actualizado");
         estadosNombres.put(APLAZADO, "Aplazado");
@@ -105,7 +108,6 @@ public final class EstadosProyecto implements Serializable {
         estadosNombres.put(VALIDADO_TECNICAMENTE, "Validado técnicamente");
         estadosNombres.put(VALIDADO_CIENTIFICAMENTE, "Validado científicamente");
         estadosNombres.put(EN_LISTA_ELEGIBLES, "En lista de elegibles");
-
     }
 
     public static String getEstadoNombre(String estado) {
@@ -121,7 +123,17 @@ public final class EstadosProyecto implements Serializable {
         return listaSiguientes.clone();
     }
 
+    public static List<EstadoProyectoDTO> getEstados() {
+        List<EstadoProyectoDTO> lista = new ArrayList<>();
+        for (Map.Entry<String, String> entry : estadosNombres.entrySet()) {
+            lista.add(new EstadoProyectoDTO(entry.getKey(), entry.getValue()));
+        }
+        return lista;
+    }
+
     private EstadosProyecto() {
         super();
     }
+
 }
+
