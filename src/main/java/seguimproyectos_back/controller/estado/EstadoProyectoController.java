@@ -1,5 +1,7 @@
 package seguimproyectos_back.controller.estado;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import seguimproyectos_back.model.EstadoProyectoDTO;
 import seguimproyectos_back.model.GenericResponse;
 import seguimproyectos_back.model.Proyecto;
 import seguimproyectos_back.service.estadosproyecto.EstadoProyectoService;
@@ -34,12 +37,12 @@ public class EstadoProyectoController {
 			@ApiResponse(code = 204, message = "No announcements found"),
 			@ApiResponse(code = 500, message = "Internal server error") })
 	@GetMapping("/estados-proyecto")
-	public ResponseEntity<GenericResponse> getAll() throws UdeaException {
+	public ResponseEntity<List<EstadoProyectoDTO>> getAll() throws UdeaException {
 
-		GenericResponse genericResponse = new GenericResponse();
-		genericResponse.setData(estadoProyectoService.getAll());
-		genericResponse.setSuccessResponse();
-		return ResponseEntity.ok(genericResponse);
+//		GenericResponse genericResponse = new GenericResponse();
+//		genericResponse.setData(estadoProyectoService.getAll());
+//		genericResponse.setSuccessResponse();
+		return ResponseEntity.ok(estadoProyectoService.getAll());
 	}
 
 }

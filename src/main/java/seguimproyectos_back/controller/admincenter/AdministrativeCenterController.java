@@ -1,5 +1,7 @@
 package seguimproyectos_back.controller.admincenter;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import co.edu.udea.utilities.exception.UdeaException;
+import seguimproyectos_back.model.AdministrativeCenterDTO;
 import seguimproyectos_back.model.GenericResponse;
 import seguimproyectos_back.service.administrativeCenter.IAdministrativeCenterService;
 
@@ -31,13 +34,13 @@ public class AdministrativeCenterController {
 			@ApiResponse(code = 404, message = "No Administrative Centers found"),
 			@ApiResponse(code = 500, message = "Internal server error") })
 	@GetMapping("/centros-administrativos")
-	public ResponseEntity<GenericResponse> getAll(@RequestParam(defaultValue = "0") Integer skip,
+	public ResponseEntity<List<AdministrativeCenterDTO>> getAll(@RequestParam(defaultValue = "0") Integer skip,
 			@RequestParam(defaultValue = "10") Integer limit) throws UdeaException {
 
-		GenericResponse genericResponse = new GenericResponse();
-		genericResponse.setData(administrativeCenterService.getAll(skip, limit));
-		genericResponse.setSuccessResponse();
-		return ResponseEntity.ok(genericResponse);
+//		GenericResponse genericResponse = new GenericResponse();
+//		genericResponse.setData(administrativeCenterService.getAll(skip, limit));
+//		genericResponse.setSuccessResponse();
+		return ResponseEntity.ok(administrativeCenterService.getAll(skip, limit));
 
 	}
 }

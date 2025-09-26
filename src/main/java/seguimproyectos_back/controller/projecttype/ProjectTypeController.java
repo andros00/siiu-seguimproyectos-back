@@ -37,13 +37,13 @@ public class ProjectTypeController {
 			@ApiResponse(code = 500, message = "Internal server error") })
 
 	@GetMapping("/tipos-proyecto")
-	public ResponseEntity<GenericResponse> getAll(@RequestParam(defaultValue = "0") Integer skip,
+	public ResponseEntity<List<ProjectTypeDTO>> getAll(@RequestParam(defaultValue = "0") Integer skip,
 			@RequestParam(defaultValue = "10") Integer limit) throws UdeaException {
 
-		GenericResponse genericResponse = new GenericResponse();
-		genericResponse.setData(projectTypeService.getAll(skip, limit));
-		genericResponse.setSuccessResponse();
-		return ResponseEntity.ok(genericResponse);
+//		GenericResponse genericResponse = new GenericResponse();
+//		genericResponse.setData(projectTypeService.getAll(skip, limit));
+//		genericResponse.setSuccessResponse();
+		return ResponseEntity.ok(projectTypeService.getAll(skip, limit));
 
 	}
 

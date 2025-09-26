@@ -1,5 +1,7 @@
 package seguimproyectos_back.controller.prossecselection;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import co.edu.udea.utilities.exception.UdeaException;
 import seguimproyectos_back.model.GenericResponse;
+import seguimproyectos_back.model.SelectionProcessDTO;
 import seguimproyectos_back.service.selectionProcess.ISelectionProcessService;
 
 @RestController
@@ -33,14 +36,14 @@ public class ProcessSelectionController {
 			@ApiResponse(code = 404, message = "No Process Selections found"),
 			@ApiResponse(code = 500, message = "Internal server error") })
 	@GetMapping("/filtro-proceso-seleccion")
-	public ResponseEntity<GenericResponse> getAll(@RequestParam(defaultValue = "0") Integer skip,
+	public ResponseEntity<List<SelectionProcessDTO>> getAll(@RequestParam(defaultValue = "0") Integer skip,
 
 			@RequestParam(defaultValue = "10") Integer limit) throws UdeaException {
 
-		GenericResponse genericResponse = new GenericResponse();
-		genericResponse.setData(selectionProcessService.getAll(skip, limit));
-		genericResponse.setSuccessResponse();
-		return ResponseEntity.ok(genericResponse);
+//		GenericResponse genericResponse = new GenericResponse();
+//		genericResponse.setData(selectionProcessService.getAll(skip, limit));
+//		genericResponse.setSuccessResponse();
+		return ResponseEntity.ok(selectionProcessService.getAll(skip, limit));
 
 	}
 }

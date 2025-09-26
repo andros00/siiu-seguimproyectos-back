@@ -1,5 +1,7 @@
 package seguimproyectos_back.controller.announcement;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import co.edu.udea.utilities.exception.UdeaException;
+import seguimproyectos_back.model.AnnouncementDTO;
 import seguimproyectos_back.model.GenericResponse;
 import seguimproyectos_back.service.announcement.IAnnouncementService;
 
@@ -31,12 +34,12 @@ public class AnnouncementController {
 			@ApiResponse(code = 204, message = "No announcements found"),
 			@ApiResponse(code = 500, message = "Internal server error") })
 	@GetMapping("/lista-convocatorias")
-	public ResponseEntity<GenericResponse> getAll(@RequestParam(defaultValue = "0") Integer skip,
+	public ResponseEntity<List<AnnouncementDTO>> getAll(@RequestParam(defaultValue = "0") Integer skip,
 			@RequestParam(defaultValue = "10") Integer limit) throws UdeaException {
 
-		GenericResponse genericResponse = new GenericResponse();
-		genericResponse.setData(announcementService.getAll(skip, limit));
-		genericResponse.setSuccessResponse();
-		return ResponseEntity.ok(genericResponse);
+//		GenericResponse genericResponse = new GenericResponse();
+//		genericResponse.setData(announcementService.getAll(skip, limit));
+//		genericResponse.setSuccessResponse();
+		return ResponseEntity.ok(announcementService.getAll(skip, limit));
 	}
 }
