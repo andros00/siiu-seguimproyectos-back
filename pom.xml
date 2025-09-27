@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -30,8 +32,10 @@
 		</info.compilation>
 
 		<!-- Parametrización de SCM -->
-		<repo.url>http://ws-svn.udea.red/git/DesarrolloInstitucional/udea-siiu-seguimproyectos-back.git</repo.url>
-		<repo.conexion>http://ws-svn.udea.red/git/DesarrolloInstitucional/udea-siiu-seguimproyectos-back.git</repo.conexion>
+		<repo.url>
+			http://ws-svn.udea.red/git/DesarrolloInstitucional/udea-siiu-seguimproyectos-back.git</repo.url>
+		<repo.conexion>
+			http://ws-svn.udea.red/git/DesarrolloInstitucional/udea-siiu-seguimproyectos-back.git</repo.conexion>
 
 	</properties>
 
@@ -65,7 +69,8 @@
 				<artifactName>siiu-seguimproyectos-back</artifactName>
 				<nexus.snapshotRepository>quality</nexus.snapshotRepository>
 				<activatedProperties>dev</activatedProperties>
-				<webXmlPath>${project.basedir}/src/main/webapp/WEB-INF/web.dev.xml</webXmlPath>
+				<webXmlPath>
+					${project.basedir}/src/main/webapp/WEB-INF/web.dev.xml</webXmlPath>
 			</properties>
 		</profile>
 
@@ -81,7 +86,8 @@
 				<repo.rama>svrdllo</repo.rama>
 				<nexus.snapshotRepository>quality</nexus.snapshotRepository>
 				<activatedProperties>dllo</activatedProperties>
-				<webXmlPath>${project.basedir}/src/main/webapp/WEB-INF/web.dllo.xml</webXmlPath>
+				<webXmlPath>
+					${project.basedir}/src/main/webapp/WEB-INF/web.dllo.xml</webXmlPath>
 			</properties>
 		</profile>
 
@@ -95,7 +101,8 @@
 				<artifactName>siiu-seguimproyectos-back</artifactName>
 				<nexus.snapshotRepository>quality</nexus.snapshotRepository>
 				<activatedProperties>test</activatedProperties>
-				<webXmlPath>${project.basedir}/src/main/webapp/WEB-INF/web.test.xml</webXmlPath>
+				<webXmlPath>
+					${project.basedir}/src/main/webapp/WEB-INF/web.test.xml</webXmlPath>
 			</properties>
 
 		</profile>
@@ -109,7 +116,8 @@
 				<artifactName>siiu-seguimproyectos-back</artifactName>
 				<nexus.snapshotRepository>releases</nexus.snapshotRepository>
 				<activatedProperties>prod</activatedProperties>
-				<webXmlPath>${project.basedir}/src/main/webapp/WEB-INF/web.prod.xml</webXmlPath>
+				<webXmlPath>
+					${project.basedir}/src/main/webapp/WEB-INF/web.prod.xml</webXmlPath>
 			</properties>
 		</profile>
 	</profiles>
@@ -145,44 +153,6 @@
 			<version>1.2.14</version>
 			<!--<scope>provided</scope> -->
 		</dependency>
-		<!-- Librerias Jersey -->
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-bundle</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-core</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<!-- Librerias Json -->
-		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib-ext-spring</artifactId>
-			<version>1.0.2</version>
-		</dependency>
 
 		<!-- Librerías para WAS -->
 		<dependency>
@@ -196,7 +166,8 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.xhtmlrenderer/flying-saucer-pdf-openpdf -->
+		<!--
+		https://mvnrepository.com/artifact/org.xhtmlrenderer/flying-saucer-pdf-openpdf -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -217,10 +188,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		<!-- Swagger Core -->
@@ -235,6 +202,7 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.9.2</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>

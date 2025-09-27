@@ -1,8 +1,2 @@
-0000000000000000000000000000000000000000 487aa7068abfbee17b6d99f385c55b1025966c85 andres.tirado <andres.tirado@udea.edu.co> 1756957716 -0500	clone: from http://gitlab.udea.red:8085/InvestigacionDlloInnovacion/siiu-seguimproyectos-back.git
-487aa7068abfbee17b6d99f385c55b1025966c85 1ba5610e7ca4ab16d990325e28bbc71746ab21fd andres.tirado <andres.tirado@udea.edu.co> 1756958350 -0500	commit: Ajuste de la estructura back
-1ba5610e7ca4ab16d990325e28bbc71746ab21fd 11df8fb73e27c951f6a613fb81f82ca8143a7fc5 andres.tirado <andres.tirado@udea.edu.co> 1758045009 -0500	commit: Cambios de estructura de deison
-11df8fb73e27c951f6a613fb81f82ca8143a7fc5 4a2bf908d37ceaeae9091c040d9114392bce6132 andres.tirado <andres.tirado@udea.edu.co> 1758057396 -0500	commit: Implementación de dependencias swagger para documentación
-4a2bf908d37ceaeae9091c040d9114392bce6132 b3b751df0abd91c1238f98a33e08f12b825c4fed andres.tirado <andres.tirado@udea.edu.co> 1758060197 -0500	merge feature-devConfigIni: Fast-forward
-b3b751df0abd91c1238f98a33e08f12b825c4fed ae32aa202f534eff5583e48679f58cdec329a980 andres.tirado <andres.tirado@udea.edu.co> 1758309212 -0500	pull origin: Fast-forward
-ae32aa202f534eff5583e48679f58cdec329a980 52e8769d4d156349776811f8cda13e566a7fff66 andres.tirado <andres.tirado@udea.edu.co> 1758687042 -0500	commit: Actualización con la versión de deison y adición de swagguer
-52e8769d4d156349776811f8cda13e566a7fff66 7f520160a12bf10dbc837c64cafe12d0c1b0a7ba andres.tirado <andres.tirado@udea.edu.co> 1758776819 -0500	commit: Cambios del procedimiento almacenado, se construye uno nuevo
+0000000000000000000000000000000000000000 2f24f149523443941d33e9a701c969f5776cb473 andres.tirado <andres.tirado@udea.edu.co> 1758920413 -0500	clone: from http://gitlab.udea.red:8085/InvestigacionDlloInnovacion/siiu-seguimproyectos-back.git
+2f24f149523443941d33e9a701c969f5776cb473 dc3fea8823c704048277e6dca4bd3d454be20750 andres.tirado <andres.tirado@udea.edu.co> 1759014429 -0500	commit: Version desplegada en srvrdllo funcional

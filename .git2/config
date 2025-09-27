@@ -11,8 +11,3 @@
 [branch "develop"]
 	remote = origin
 	merge = refs/heads/develop
-	vscode-merge-base = origin/develop
-[branch "feature-devConfigIni"]
-	remote = origin
-	merge = refs/heads/feature-devConfigIni
-	vscode-merge-base = origin/feature-devConfigIni
