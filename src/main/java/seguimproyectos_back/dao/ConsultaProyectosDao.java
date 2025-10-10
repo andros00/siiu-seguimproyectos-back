@@ -1,32 +1,20 @@
 package seguimproyectos_back.dao;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.SqlOutParameter;
-import org.springframework.jdbc.core.SqlParameter;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Repository;
 
-import co.edu.udea.utilities.exception.UdeaException;
-import oracle.jdbc.OracleTypes;
-import seguimproyectos_back.model.Proyecto;
+import seguimproyectos_back.model.ProyectoDTO;
 
 @Repository
 public class ConsultaProyectosDao {
 
 	private final JdbcTemplate jdbcTemplate;
 
-	@Autowired
 	public ConsultaProyectosDao(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
@@ -38,7 +26,7 @@ public class ConsultaProyectosDao {
 		return "%" + valor.trim() + "%";
 	}
 
-	public List<Proyecto> consultaProyectos(Proyecto proyecto) {
+	public List<ProyectoDTO> consultaProyectos(ProyectoDTO proyecto) {
 		String sql = "SELECT * FROM TABLE(SIIU_PROYECTO_CRUD.SP_SELECT001(?, ?, ?, ?, ?, ?))";
 
 		return jdbcTemplate.query(sql,
@@ -50,10 +38,10 @@ public class ConsultaProyectosDao {
 						(proyecto.getConvocatoria()), 
 						(proyecto.getSubtipoProyecto())
 
-				}, new RowMapper<Proyecto>() {
+				}, new RowMapper<ProyectoDTO>() {
 					@Override
-					public Proyecto mapRow(ResultSet rs, int rowNum) throws SQLException {
-						Proyecto p = new Proyecto();
+					public ProyectoDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+						ProyectoDTO p = new ProyectoDTO();
 						p.setCodigo(rs.getString("CODIGO"));
 						p.setNombreCorto(rs.getString("NOMBRE_CORTO"));
 						p.setNombreCompleto(rs.getString("NOMBRE_COMPLETO"));
@@ -70,9 +58,9 @@ public class ConsultaProyectosDao {
 						p.setDuracion(rs.getLong("DURACION"));
 						p.setFechaInicioInicioFormal(rs.getDate("FECHA_INICIO"));
 						p.setFechaInicioFinalizacionFormal(rs.getDate("FECHA_FINALIZACION"));
-
+						p.setCodigoInterno(rs.getString("CODIGO_INTERNO"));
+						
 //	                        p.setSubtipoProyecto(rs.getLong("SUBTIPO_PROYECTO"));
-
 //	                        p.setCentroGestionStr(rs.getString("NOMBRE_CENTRO_GESTION"));
 //	                        p.setCentroGestionCortoStr(rs.getString("NOMBRE_CORTO_CENTRO_GESTION"));
 //	                        p.setMaxProrrogaInicioFormal(rs.getLong("MAX_PRORROGA_INI_FORMAL"));

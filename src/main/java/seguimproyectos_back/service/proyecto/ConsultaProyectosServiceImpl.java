@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.udea.utilities.exception.UdeaException;
 import seguimproyectos_back.dao.ConsultaProyectosDao;
-import seguimproyectos_back.model.Proyecto;
+import seguimproyectos_back.model.ProyectoDTO;
 
 
 @Service
@@ -19,7 +19,7 @@ public class ConsultaProyectosServiceImpl implements ConsultaProyectosService {
 	}
 	
 	@Override
-    public List<Proyecto> consultarProyecto(Proyecto proyecto) throws UdeaException {
+    public List<ProyectoDTO> consultarProyecto(ProyectoDTO proyecto) throws UdeaException {
         return consultaProyectosDao.consultaProyectos(proyecto);
     }
 	

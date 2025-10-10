@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import seguimproyectos_back.model.GenericResponse;
-import seguimproyectos_back.model.Proyecto;
+import seguimproyectos_back.model.ProyectoDTO;
 import seguimproyectos_back.service.proyecto.ConsultaProyectosService;
 
 @RestController
@@ -37,7 +37,7 @@ public class ConsultaProyectosController {
 	@PostMapping(value = "/consultar")
 	public ResponseEntity<GenericResponse> consultar(
 			@ApiParam(value = "Objeto Proyecto con los filtros de búsqueda", required = true) 
-			@RequestBody Proyecto proyecto)
+			@RequestBody ProyectoDTO proyecto)
 			throws UdeaException {
 		GenericResponse genericResponse = new GenericResponse();
 		genericResponse.setData(consultaProyectosService.consultarProyecto(proyecto));
