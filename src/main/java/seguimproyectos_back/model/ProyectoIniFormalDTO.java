@@ -3,9 +3,12 @@ package seguimproyectos_back.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProyectoIniFormalDTO {
 	
     public static final String ESTADO_EN_EDICION = "en_edicion";

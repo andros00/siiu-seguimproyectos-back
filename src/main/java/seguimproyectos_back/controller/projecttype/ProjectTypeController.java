@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import seguimproyectos_back.model.ProjectTypeDTO;
-import seguimproyectos_back.service.projectType.IProjectTypeService;
+import seguimproyectos_back.service.project.type.IProjectTypeService;
 
 @RestController
 @RequestMapping("/compartido")

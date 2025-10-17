@@ -3,9 +3,12 @@ package seguimproyectos_back.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ParticipanteProyectoDTO {
 	private BigDecimal identificador;
 	private String proyecto;

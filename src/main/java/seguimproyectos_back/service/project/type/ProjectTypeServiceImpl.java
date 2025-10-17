@@ -1,4 +1,4 @@
-package seguimproyectos_back.service.projectType;
+package seguimproyectos_back.service.project.type;
 
 import java.util.List;
 

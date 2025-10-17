@@ -3,10 +3,13 @@ package seguimproyectos_back.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Data;
 
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProyectoBaseDTO implements Serializable {
 
 	private static final long serialVersionUID = 5047775266466782167L;
