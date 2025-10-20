@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import seguimproyectos_back.dao.participante.proyecto.UdeaException;
+import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.model.participante.VinculoParticipanteDTO;
 
 @Repository
@@ -32,10 +32,10 @@ public class VinculoParticipanteDao {
 
 		LocalDateTime fechaHoraActual = LocalDateTime.now();
 
-		String sql = "SELECT * FROM TABLE(gene_consultas.buscarvinculoempleado(?,'')";
+		String sql = "SELECT * FROM TABLE(gene_consultas.buscarvinculoempleado(?))";
 
 		return jdbcTemplate.query(sql,
-				new Object[] { formatSqlLike(indentificador), formatSqlLike(fechaHoraActual.toString()) },
+				new Object[] { formatSqlLike(indentificador) },
 				new RowMapper<VinculoParticipanteDTO>() {
 					@Override
 					public VinculoParticipanteDTO mapRow(ResultSet rs, int rowNum) throws SQLException {

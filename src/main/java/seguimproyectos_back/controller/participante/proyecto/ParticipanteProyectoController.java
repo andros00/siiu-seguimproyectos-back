@@ -14,7 +14,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import seguimproyectos_back.controller.participante.ParticipanteDTO;
 import seguimproyectos_back.model.ParticipanteProyectoDTO;
 import seguimproyectos_back.service.participante.proyecto.ParticipanteProyectoService;
 

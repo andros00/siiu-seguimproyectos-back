@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.dao.participante.vinculo.VinculoParticipanteDao;
 import seguimproyectos_back.model.participante.VinculoParticipanteDTO;
 
@@ -17,10 +18,9 @@ public class VinculoParticipanteServiceImpl implements VinculoParticipanteServic
 	}
 
 	@Override
-	public List<VinculoParticipanteDTO> consultarVinculoParticipanteByIdentificaion(String indentificacion)
+	public List<VinculoParticipanteDTO> consultarVinculoParticipanteByIdentificaion(String identificacion)
 			throws UdeaException {
-		// TODO Auto-generated method stub
-		return null;
+		return reppository.consultarParticipantes(identificacion);
 	}
 
 }

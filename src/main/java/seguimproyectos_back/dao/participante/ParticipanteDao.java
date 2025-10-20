@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import seguimproyectos_back.dao.UdeaException;
+import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.model.participante.ParticipanteDTO;
 import seguimproyectos_back.model.personanatural.PersonaNaturalDTO;
 import seguimproyectos_back.model.personanatural.PersonaNaturalRequest;

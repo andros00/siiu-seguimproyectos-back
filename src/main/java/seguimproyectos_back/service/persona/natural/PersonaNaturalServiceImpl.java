@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.dao.PersonaNaturalDao;
-import seguimproyectos_back.dao.UdeaException;
 import seguimproyectos_back.model.personanatural.PersonaNaturalDTO;
 import seguimproyectos_back.model.personanatural.PersonaNaturalRequest;
 
@@ -20,8 +20,8 @@ public class PersonaNaturalServiceImpl implements PersonaNaturalService {
 	}
 
 	@Override
-	public List<PersonaNaturalDTO> consultarPersona(PersonaNaturalRequest persona) throws UdeaException {
-		return reporitory.consultarPersona(persona);
+	public List<PersonaNaturalDTO> consultarPersona(String identificacion) throws UdeaException {
+		return reporitory.consultarPersona(identificacion);
 	}
 
 }

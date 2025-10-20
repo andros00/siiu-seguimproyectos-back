@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.model.ParticipanteProyectoDTO;
 import seguimproyectos_back.model.personanatural.PersonaNaturalDTO;
 import seguimproyectos_back.model.personanatural.PersonaNaturalRequest;
@@ -28,12 +29,12 @@ public class PersonaNaturalDao {
 		return valor.trim();
 	}
 
-	public List<PersonaNaturalDTO> consultarPersona(PersonaNaturalRequest persona) throws UdeaException {
-		String sql = "SELECT * from TABLE (cast(gene_consultas.buscarpersonanatural(?,?,?) as obj_tab_personanatural));";
+	public List<PersonaNaturalDTO> consultarPersona(String identificacion) throws UdeaException {
+		String sql = "SELECT * from TABLE (gene_consultas.buscarpersonanatural(?,''))";
 
 		return jdbcTemplate.query(
-				sql, new Object[] { formatSqlLike(persona.getIdentificacion()),
-						formatSqlLike(persona.getNombrePersona()), formatSqlLike(persona.getCorreo()) },
+				sql, new Object[] { formatSqlLike(identificacion),
+						},
 				new RowMapper<PersonaNaturalDTO>() {
 					@Override
 					public PersonaNaturalDTO mapRow(ResultSet rs, int rowNum) throws SQLException {

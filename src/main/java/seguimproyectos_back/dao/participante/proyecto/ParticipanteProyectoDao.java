@@ -9,9 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import co.edu.udea.util.UdeaException;
-import seguimproyectos_back.model.ParticipanteDTO;
 import seguimproyectos_back.model.ParticipanteProyectoDTO;
-import seguimproyectos_back.model.ProyectoDTO;
 
 @Repository
 public class ParticipanteProyectoDao {
