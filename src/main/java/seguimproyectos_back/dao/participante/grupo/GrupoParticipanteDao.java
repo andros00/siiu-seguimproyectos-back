@@ -2,15 +2,16 @@ package seguimproyectos_back.dao.participante.grupo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
-import seguimproyectos_back.model.participante.VinculoParticipanteDTO;
+import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.model.participante.grupo.GrupoParticipanteDTO;
 
+@Repository
 public class GrupoParticipanteDao {
 
 	private final JdbcTemplate jdbcTemplate;
@@ -28,7 +29,7 @@ public class GrupoParticipanteDao {
 
 	public List<GrupoParticipanteDTO> consultarGrupoParticipante(String indentificador) throws UdeaException {
 
-		String sql = "SELECT * FROM TABLE(SIIU_PARTICIPANTE_PROY_CRUD.SP_SELECT03(?,?));";
+		String sql = "SELECT * FROM TABLE(SIIU_PARTICIPANTE_PROY_CRUD.SP_SELECT03(?,?))";
 
 		return jdbcTemplate.query(sql, new Object[] { formatSqlLike("Habilitado"), formatSqlLike(indentificador) },
 				new RowMapper<GrupoParticipanteDTO>() {

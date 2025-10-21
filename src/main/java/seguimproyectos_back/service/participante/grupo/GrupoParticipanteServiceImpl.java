@@ -2,9 +2,13 @@ package seguimproyectos_back.service.participante.grupo;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.dao.participante.grupo.GrupoParticipanteDao;
 import seguimproyectos_back.model.participante.grupo.GrupoParticipanteDTO;
 
+@Service
 public class GrupoParticipanteServiceImpl implements GrupoParticipanteService {
 
 	private final GrupoParticipanteDao repository;

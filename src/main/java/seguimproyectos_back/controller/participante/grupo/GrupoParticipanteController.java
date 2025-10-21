@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.edu.udea.util.UdeaException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import seguimproyectos_back.model.participante.VinculoParticipanteDTO;
 import seguimproyectos_back.model.participante.grupo.GrupoParticipanteDTO;
 import seguimproyectos_back.service.participante.grupo.GrupoParticipanteService;
 
@@ -36,7 +36,7 @@ public class GrupoParticipanteController {
 			@ApiResponse(code = 400, message = "Parámetros inválidos"),
 			@ApiResponse(code = 404, message = "No se encontraron Grupo Participante de la persona natural"),
 			@ApiResponse(code = 500, message = "Error interno en el servidor") })
-	@GetMapping("/vinculo-participante")
+	@GetMapping("/grupo-participante")
 	public ResponseEntity<List<GrupoParticipanteDTO>> grupoParticipanteByIdentificaion(
 			@ApiParam(value = "Identificacion persona natural", example = "1037000123") @RequestParam() String identificacion)
 			throws UdeaException {
