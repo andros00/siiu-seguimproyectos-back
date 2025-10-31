@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.edu.udea.util.UdeaException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -43,7 +45,7 @@ public class InstitucionParticipanteController {
 			@ApiResponse(code = 400, message = "Parámetros inválidos"),
 			@ApiResponse(code = 404, message = "No se encontraron Institucion Participante de la persona natural"),
 			@ApiResponse(code = 500, message = "Error interno en el servidor") })
-	@GetMapping("/institucion-participante")
+	@PostMapping("/institucion-participante")
 	public ResponseEntity<List<InstitucionParticipanteDTO>> institucionParticipanteByIdentificaion(
 			@RequestBody InstitucionParticipanteRequest institucionParticipante)
 			throws UdeaException {

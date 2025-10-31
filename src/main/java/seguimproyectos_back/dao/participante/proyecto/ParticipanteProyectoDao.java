@@ -77,6 +77,9 @@ public class ParticipanteProyectoDao {
 							participanteProyecto.setNombrePersona(rs.getString("PERSONA_NATURAL"));
 						}
 						participanteProyecto.setEsInvestigadorPrincipal(rs.getInt("ES_INVESTIGADOR_PRINCI"));
+						
+						System.out.println(":::::::participanteProyecto::::::::"+participanteProyecto.toString());
+						
 						return participanteProyecto;
 					}
 				});
@@ -128,8 +131,12 @@ public class ParticipanteProyectoDao {
 				participanteProyecto.setNombrePersona(rs.getString("PERSONA_NATURAL"));
 			}
 			participanteProyecto.setEsInvestigadorPrincipal(rs.getInt("ES_INVESTIGADOR_PRINCI"));
+			
+			System.out.println(":::::::participanteProyecto::::::::"+participanteProyecto.toString());
+			
 			return participanteProyecto;
 
 		});
+		
 	}
 }

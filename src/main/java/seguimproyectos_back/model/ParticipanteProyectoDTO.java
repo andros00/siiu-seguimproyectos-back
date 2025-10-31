@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ParticipanteProyectoDTO {
 	private BigDecimal identificador;
 	private String proyecto;

@@ -2,9 +2,12 @@ package seguimproyectos_back.model.participante;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Data;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RolParticipanteDTO {
 
 	private Integer identificador;

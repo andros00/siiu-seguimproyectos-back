@@ -1,7 +1,5 @@
 package seguimproyectos_back.controller.persona.natural;
 
-import java.util.List;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +34,7 @@ public class PersonaNaturalController {
 			@ApiResponse(code = 404, message = "No se encontraron Persona Natual"),
 			@ApiResponse(code = 500, message = "Error interno en el servidor") })
 	@GetMapping("/persona-natual")
-	public ResponseEntity<List<PersonaNaturalDTO>> personaNaturalByIdentificacion(
+	public ResponseEntity<PersonaNaturalDTO> personaNaturalByIdentificacion(
 			@ApiParam(value = "identificacion", example = "1037000123") @RequestParam() String identificacion)
 			throws UdeaException {
 

@@ -39,7 +39,7 @@ public class GrupoParticipanteDao {
 						GrupoParticipanteDTO grupo = new GrupoParticipanteDTO();
 
 						grupo.setIdentificador(rs.getLong("IDENTIFICADOR"));
-						grupo.setNombreCompleto(rs.getString("NOMBRE_COMPLETO"));
+						grupo.setNombreCorto(rs.getString("NOMBRE_CORTO"));
 
 						return grupo;
 					}

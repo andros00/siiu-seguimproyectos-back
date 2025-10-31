@@ -20,7 +20,7 @@ public class PersonaNaturalServiceImpl implements PersonaNaturalService {
 	}
 
 	@Override
-	public List<PersonaNaturalDTO> consultarPersona(String identificacion) throws UdeaException {
+	public PersonaNaturalDTO consultarPersona(String identificacion) throws UdeaException {
 		return reporitory.consultarPersona(identificacion);
 	}
 

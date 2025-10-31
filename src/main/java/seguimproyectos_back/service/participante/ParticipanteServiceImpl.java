@@ -1,7 +1,5 @@
 package seguimproyectos_back.service.participante;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import co.edu.udea.util.UdeaException;
@@ -19,8 +17,13 @@ public class ParticipanteServiceImpl implements ParticipanteService {
 	}
 
 	@Override
-	public List<ParticipanteDTO> actualizarParticipante(ParticipanteDTO participante) throws UdeaException {
-		return repository.actualizarParticipante(participante);
+	public ParticipanteDTO actualizarParticipante(ParticipanteDTO participante) throws UdeaException {
+		
+		int response = repository.actualizarParticipante(participante);
+		
+		System.out.println("Update:::"+(response==1));
+		
+		return participante;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.dao.participante.institucion.InstitucionParticipanteDao;
 import seguimproyectos_back.model.participante.institucion.InstitucionParticipanteDTO;
 import seguimproyectos_back.model.participante.institucion.InstitucionParticipanteRequest;
@@ -21,7 +22,7 @@ public class InstitucionParticipanteServiceImpl implements InstitucionParticipan
 	@Override
 	public List<InstitucionParticipanteDTO> consultarInstitucionParticipanteByIdentificaion(
 			InstitucionParticipanteRequest institucionParticipante) throws UdeaException {
-		return repository.institucionParticipanteByIdentificaion(institucionParticipante);
+		return repository.institucionParticipanteByIdentificacion(institucionParticipante);
 	}
 
 }

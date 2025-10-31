@@ -30,13 +30,9 @@ public class ConsultaProyectosDao {
 		String sql = "SELECT * FROM TABLE(SIIU_PROYECTO_CRUD.SP_SELECT001(?, ?, ?, ?, ?, ?))";
 
 		return jdbcTemplate.query(sql,
-				new Object[] {
-						formatSqlLike(proyecto.getCodigo()),
-						(proyecto.getIdCentroGestion()),
-						formatSqlLike(proyecto.getEstado()),
-						(proyecto.getProcesoSeleccion()),
-						(proyecto.getConvocatoria()), 
-						(proyecto.getSubtipoProyecto())
+				new Object[] { formatSqlLike(proyecto.getCodigo()), (proyecto.getIdCentroGestion()),
+						formatSqlLike(proyecto.getEstado()), (proyecto.getProcesoSeleccion()),
+						(proyecto.getConvocatoria()), (proyecto.getSubtipoProyecto())
 
 				}, new RowMapper<ProyectoDTO>() {
 					@Override
@@ -59,7 +55,7 @@ public class ConsultaProyectosDao {
 						p.setFechaInicioInicioFormal(rs.getDate("FECHA_INICIO"));
 						p.setFechaInicioFinalizacionFormal(rs.getDate("FECHA_FINALIZACION"));
 						p.setCodigoInterno(rs.getString("CODIGO_INTERNO"));
-						
+
 //	                        p.setSubtipoProyecto(rs.getLong("SUBTIPO_PROYECTO"));
 //	                        p.setCentroGestionStr(rs.getString("NOMBRE_CENTRO_GESTION"));
 //	                        p.setCentroGestionCortoStr(rs.getString("NOMBRE_CORTO_CENTRO_GESTION"));

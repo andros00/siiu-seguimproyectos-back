@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import seguimproyectos_back.model.participante.grupo.GrupoParticipanteDTO;
+import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.model.participante.institucion.InstitucionParticipanteDTO;
 import seguimproyectos_back.model.participante.institucion.InstitucionParticipanteRequest;
 
@@ -23,15 +23,15 @@ public class InstitucionParticipanteDao {
 
 	private String formatSqlLike(String valor) {
 		if (valor == null || valor.trim().isEmpty() || "%".equals(valor.trim())) {
-			return "%";
+			return "";
 		}
 		return valor.trim();
 	}
 
-	public List<InstitucionParticipanteDTO> institucionParticipanteByIdentificaion(
+	public List<InstitucionParticipanteDTO> institucionParticipanteByIdentificacion(
 			InstitucionParticipanteRequest institucionParticipante) throws UdeaException {
 
-		String sql = "SELECT * FROM TABLE(SIIU_PARTICIPANTE_PROY_CRUD.SP_SELECT03(?,?))";
+		String sql = "SELECT * FROM TABLE (GENE_CONSULTAS.BUSCARPERSONAJURIDICA(?,?))";
 
 		return jdbcTemplate.query(sql,
 				new Object[] { formatSqlLike(institucionParticipante.getNit()),

@@ -29,11 +29,10 @@ public class PersonaNaturalDao {
 		return valor.trim();
 	}
 
-	public List<PersonaNaturalDTO> consultarPersona(String identificacion) throws UdeaException {
+	public PersonaNaturalDTO consultarPersona(String identificacion) throws UdeaException {
 		String sql = "SELECT * from TABLE (gene_consultas.buscarpersonanatural(?,''))";
 
-		return jdbcTemplate.query(
-				sql, new Object[] { formatSqlLike(identificacion),
+		return jdbcTemplate.queryForObject(	sql, new Object [] { formatSqlLike(identificacion),
 						},
 				new RowMapper<PersonaNaturalDTO>() {
 					@Override

@@ -8,6 +8,6 @@ import seguimproyectos_back.model.personanatural.PersonaNaturalRequest;
 
 public interface PersonaNaturalService {
 
-	List<PersonaNaturalDTO> consultarPersona(String identificacion) throws UdeaException;
+	PersonaNaturalDTO consultarPersona(String identificacion) throws UdeaException;
 
 }
