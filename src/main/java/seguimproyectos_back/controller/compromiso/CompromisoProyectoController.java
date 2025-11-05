@@ -16,13 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.udea.util.UdeaException;
 import io.swagger.annotations.Api;
 import seguimproyectos_back.model.compromiso.CompromisoCentroDTO;
+import seguimproyectos_back.model.compromiso.CompromisoFechaRequest;
 import seguimproyectos_back.model.compromiso.CompromisoProyectoDTO;
 import seguimproyectos_back.service.compromiso.CompromisoProyectoService;
 
 @RestController
 @RequestMapping("/compromiso")
-@Api(value = "compromiso", tags = {
-		"compromiso" }, description = "API para la gestión y consulta de los compromiso de proyectos de la Universidad de Antioquia, a los cuales se encuentran adscritos las persona natural.")
+@Api(value = "Compromiso", tags = {
+		"Compromiso" }, description = "API para la gestión y consulta de los compromiso de proyectos de la Universidad de Antioquia, a los cuales se encuentran adscritos las persona natural.")
 
 public class CompromisoProyectoController {
 
@@ -44,10 +45,9 @@ public class CompromisoProyectoController {
 		return ResponseEntity.ok(result);
 	}
 
-	@PutMapping("/{id}/fecha-estimada")
-	public ResponseEntity<Integer> actualizarFechaEstimada(@PathVariable Long id, @RequestParam Date nuevaFecha,
-			@RequestParam Long idSolicitudAdm, @RequestParam String usuario) throws UdeaException {
-		int result = service.actualizarFechaEstimada(id, nuevaFecha, idSolicitudAdm, usuario);
+	@PutMapping("/fecha-estimada")
+	public ResponseEntity<Integer> actualizarFechaEstimada(@RequestBody CompromisoFechaRequest compromisoFecha) throws UdeaException {
+		int result = service.actualizarFechaEstimada(compromisoFecha);
 		return ResponseEntity.ok(result);
 	}
 

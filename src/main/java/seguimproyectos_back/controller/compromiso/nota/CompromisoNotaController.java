@@ -18,7 +18,7 @@ import seguimproyectos_back.service.compromiso.nota.CompromisoNotaService;
 
 @RestController
 @RequestMapping("/compromiso")
-@Api(value = "compromiso-nota", tags = { "compromiso-nota" }, description = "Gestión de notas de compromiso")
+@Api(value = "Compromiso-nota", tags = { "Compromiso-nota" }, description = "Gestión de notas de compromiso")
 public class CompromisoNotaController {
 	private final CompromisoNotaService service;
 

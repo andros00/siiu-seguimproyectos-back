@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import co.edu.udea.util.UdeaException;
 import seguimproyectos_back.dao.compromiso.CompromisoProyectoDao;
 import seguimproyectos_back.model.compromiso.CompromisoCentroDTO;
+import seguimproyectos_back.model.compromiso.CompromisoFechaRequest;
 import seguimproyectos_back.model.compromiso.CompromisoProyectoDTO;
 
 @Service
@@ -27,9 +28,9 @@ public class CompromisoProyectoServiceImpl implements CompromisoProyectoService{
 		return repository.update(compromiso);
 	}
 
-	public int actualizarFechaEstimada(Long id, Date nuevaFecha, Long idSolicitudAdm, String usuario)
+	public int actualizarFechaEstimada(CompromisoFechaRequest compromisoFecha)
 			throws UdeaException {
-		return repository.actualizarFechaEstimada(id, nuevaFecha, idSolicitudAdm, usuario);
+		return repository.actualizarFechaEstimada(compromisoFecha);
 	}
 
 	public List<CompromisoProyectoDTO> obtenerTodos() throws UdeaException {
