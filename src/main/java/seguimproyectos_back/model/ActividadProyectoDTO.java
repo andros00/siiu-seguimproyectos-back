@@ -9,8 +9,8 @@ public class ActividadProyectoDTO {
 	private String proyecto;
 	private Integer orden;
 	private Integer consecutivo;
-	private Long inicio;
-	private Long fin;
+	private Integer inicio;
+	private Integer fin;
 	private String nombre;
 	private String detalle;
 

@@ -32,6 +32,7 @@ public class ParticipanteDao {
 	            + String.join(",", Collections.nCopies(30, "?")) + ") }";
 
 	    return jdbcTemplate.execute(sql, (CallableStatementCallback<Integer>) cs -> {
+	    	System.out.println("::::::::::::::::"+participante.toString());
 
 	        cs.registerOutParameter(1, Types.NUMERIC);
 	        

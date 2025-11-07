@@ -1,15 +1,11 @@
 package seguimproyectos_back.controller.etapa;
 
-import java.util.Date;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.udea.util.UdeaException;
@@ -30,30 +26,10 @@ public class EtapaProyectoController {
 		this.etapaProyectoService = etapaProyectoService;
 	}
 
-	@PostMapping
-	public ResponseEntity<?> crear(@RequestBody EtapaProyectoDTO dto) throws UdeaException {
-		return ResponseEntity.ok(etapaProyectoService.insertar(dto));
+	@GetMapping
+	public ResponseEntity<List<EtapaProyectoDTO>> listarPorProyecto(@RequestParam() String codigoProyecto) throws UdeaException {
+		return ResponseEntity.ok(etapaProyectoService.listarPorCodigoProyecto(codigoProyecto));
 	}
 
-	@PutMapping
-	public ResponseEntity<?> actualizar(@RequestBody EtapaProyectoDTO dto) throws UdeaException {
-		return ResponseEntity.ok(etapaProyectoService.actualizar(dto));
-	}
-
-	@DeleteMapping("/{id}")
-	public ResponseEntity<?> eliminar(@PathVariable Long id) throws UdeaException {
-		return ResponseEntity.ok(etapaProyectoService.eliminar(id));
-	}
-
-	@GetMapping("/proyecto/{codigo}")
-	public ResponseEntity<?> listarPorProyecto(@PathVariable String codigo) throws UdeaException {
-		return ResponseEntity.ok(etapaProyectoService.listarPorCodigoProyecto(codigo));
-	}
-
-	@GetMapping("/proyecto/{codigo}/desde/{fecha}")
-	public ResponseEntity<?> listarDesdeFecha(@PathVariable String codigo, @PathVariable Date fecha)
-			throws UdeaException {
-		return ResponseEntity.ok(etapaProyectoService.consultarDesdeFecha(codigo, fecha));
-	}
 
 }

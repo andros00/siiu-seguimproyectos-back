@@ -48,5 +48,6 @@ public class ParticipanteProyectoDTO {
 	private String dedicacionNN;
 	private String nombreGrupo;
 	private int esInvestigadorPrincipal;
+	private String correo;
 		
 }

@@ -3,6 +3,7 @@ package seguimproyectos_back.dao.participante.proyecto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -28,7 +29,7 @@ public class ParticipanteProyectoDao {
 	}
 
 	public List<ParticipanteProyectoDTO> consultarParticipantes(String codigoProyecto) throws UdeaException {
-		String sql = "SELECT * FROM TABLE(SIIU_PARTICIPANTE_PROY_CRUD.SP_SELECT07(?))";
+		String sql = "SELECT * FROM TABLE(SIIU_PARTICIPANTE_PROY_CRUD.SP_SELECT007(?))";
 
 		return jdbcTemplate.query(sql, new Object[] { formatSqlLike(codigoProyecto) },
 				new RowMapper<ParticipanteProyectoDTO>() {
@@ -69,7 +70,7 @@ public class ParticipanteProyectoDao {
 						participanteProyecto.setDedicacionNN(participanteProyecto.getDedicacionHoras() + " H - "
 								+ participanteProyecto.getDedicacionMeses() + " M");
 						participanteProyecto.setNombreGrupo(rs.getString("NOMBRE_CORTO_GRUPO"));
-						participanteProyecto.setNombrePersona(rs.getString("NOMBRE_PERSONA"));
+						participanteProyecto.setNombrePersona(Optional.ofNullable(rs.getString("NOMBRE_PERSONA")).orElse("Anónimo"));
 						participanteProyecto.setTipoContrato(rs.getString("TIPO_CONTRATO"));
 						participanteProyecto.setDetalleContrato(rs.getString("DETALLE_CONTRATO"));
 						participanteProyecto.setNombreProgramaExterno(rs.getString("NOMBRE_PROGRAMA_EXTERNO"));
@@ -77,8 +78,7 @@ public class ParticipanteProyectoDao {
 							participanteProyecto.setNombrePersona(rs.getString("PERSONA_NATURAL"));
 						}
 						participanteProyecto.setEsInvestigadorPrincipal(rs.getInt("ES_INVESTIGADOR_PRINCI"));
-						
-						System.out.println(":::::::participanteProyecto::::::::"+participanteProyecto.toString());
+						participanteProyecto.setCorreo(rs.getString("CORREO"));
 						
 						return participanteProyecto;
 					}
@@ -131,8 +131,6 @@ public class ParticipanteProyectoDao {
 				participanteProyecto.setNombrePersona(rs.getString("PERSONA_NATURAL"));
 			}
 			participanteProyecto.setEsInvestigadorPrincipal(rs.getInt("ES_INVESTIGADOR_PRINCI"));
-			
-			System.out.println(":::::::participanteProyecto::::::::"+participanteProyecto.toString());
 			
 			return participanteProyecto;
 
